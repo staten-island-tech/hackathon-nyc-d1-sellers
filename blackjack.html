@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Random Picker</title>
+</head>
+<body>
+  <h2>Custom Random Picker</h2>
+  <textarea id="inputs" rows="10" cols="30" placeholder="Enter items, one per line"></textarea><br>
+  <button onclick="pickRandom()">Pick Random</button>
+  <h3>Result: <span id="result"></span></h3>
+
+  <script>
+    function pickRandom() {
+      const input = document.getElementById("inputs").value;
+      const options = input.split('\n').filter(item => item.trim() !== '');
+      if (options.length === 0) {
+        document.getElementById("result").innerText = "Please enter at least one option.";
+        return;
+      }
+      const choice = options[Math.floor(Math.random() * options.length)];
+      document.getElementById("result").innerText = choice;
+    }
+  </script>
+</body>
+</html>
